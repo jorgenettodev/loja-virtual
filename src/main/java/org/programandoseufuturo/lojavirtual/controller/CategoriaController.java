@@ -56,16 +56,6 @@ public class CategoriaController {
         // se deu ruim, retorna build() e badRequest
     }
 
-    /*
-     ** Cria uma rota de pegar categoria por id
-     *
-     ** @Input: ID via @RequestParam
-     *
-     ** Processamento:
-     * retorna um optional com a categoria se ela existir
-     *
-     ** Output: Retorna a categoria solicitada
-     */
     @GetMapping("/{id}")
     public ResponseEntity<Categoria> getCategoriaById(@PathVariable("id") int id) {
         return ResponseEntity.status(200).body(service.getCategoriaById(id));
