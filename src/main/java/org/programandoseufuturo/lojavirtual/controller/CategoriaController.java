@@ -8,12 +8,15 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RestController
@@ -28,7 +31,6 @@ public class CategoriaController {
     }
 
     @PostMapping
-
     public ResponseEntity cadastrarCategoria(@RequestBody Categoria categoria) {
         Categoria categoriaCriada = service.cadastrarCategoria(categoria);
 
@@ -42,7 +44,7 @@ public class CategoriaController {
     @GetMapping
     public ResponseEntity<List<Categoria>> listarCategorias() {
         // faz a chamada para o db e pega todas as categorias
-        List<Categoria> categorias = service.listaCategorias();
+        List<Categoria> categorias = service.listarCategorias();
 
         if (categorias != null) {
             return ResponseEntity.status(HttpStatus.OK.value()).body(categorias);
@@ -53,4 +55,21 @@ public class CategoriaController {
         // se deu bom, retorna a response + a lista de Categorias
         // se deu ruim, retorna build() e badRequest
     }
+
+    /*
+     ** Cria uma rota de pegar categoria por id
+     *
+     ** @Input: ID via @RequestParam
+     *
+     ** Processamento:
+     * retorna um optional com a categoria se ela existir
+     *
+     ** Output: Retorna a categoria solicitada
+     */
+    @GetMapping("/{id}")
+    public ResponseEntity<Categoria> getCategoriaById(@PathVariable("id") int id) {
+        return ResponseEntity.status(200).body(service.getCategoriaById(id));
+    }
+
+    // cria uma rota para deletar uma categoria por id
 }

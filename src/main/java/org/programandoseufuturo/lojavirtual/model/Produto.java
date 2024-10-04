@@ -44,18 +44,6 @@ public class Produto {
 
     }
 
-    public Produto(int id, String nome, String descricao, BigDecimal preco, boolean estaDisponivel, String urlImagem,
-            boolean estaFavoritado, Long quantidadeDisponivel) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.preco = preco;
-        this.estaDisponivel = estaDisponivel;
-        this.urlImagem = urlImagem;
-        this.estaFavoritado = estaFavoritado;
-        this.quantidadeDisponivel = quantidadeDisponivel;
-    }
-
     public int getId() {
         return id;
     }
@@ -118,6 +106,14 @@ public class Produto {
 
     public void setQuantidadeDisponivel(Long quantidadeDisponivel) {
         this.quantidadeDisponivel = quantidadeDisponivel;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
 }

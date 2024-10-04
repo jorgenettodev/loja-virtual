@@ -39,16 +39,16 @@ public class ProdutoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Produto> getById(@PathVariable int id) {
+    public ResponseEntity<Produto> getById(@PathVariable("id") int id) {
 
         return ResponseEntity.status(HttpStatus.OK.value()).body(service.obterProdutoPeloId(id));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Produto> deletarProduto(@PathVariable int id) {
+    public ResponseEntity<Produto> deletarProduto(@PathVariable("id") int id) {
         return ResponseEntity.status(HttpStatus.OK.value()).body(service.deletarProduto(id));
     }
-    
+
     @PostMapping
     public ResponseEntity<Produto> cadastrarProduto(@RequestBody Produto produto) {
         Produto produtoCriado = service.cadastrarProduto(produto);

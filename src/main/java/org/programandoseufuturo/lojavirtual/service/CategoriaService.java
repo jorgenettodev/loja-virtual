@@ -5,6 +5,7 @@ import org.programandoseufuturo.lojavirtual.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoriaService {
@@ -21,7 +22,19 @@ public class CategoriaService {
     }
 
     // metodo para pegar todas Categorias
-    public List<Categoria> listaCategorias() {
+    public List<Categoria> listarCategorias() {
         return repository.findAll();
+    }
+
+    // obter categoria pelo id
+    public Categoria getCategoriaById(int id) {
+
+        Optional<Categoria> categoriaBuscada = repository.findById(id);
+
+
+        if (categoriaBuscada.isPresent()) {
+            return categoriaBuscada.get();
+        }
+        throw new RuntimeException("Categoria nao encontrada");
     }
 }
