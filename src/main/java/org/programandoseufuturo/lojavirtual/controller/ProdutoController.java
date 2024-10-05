@@ -47,6 +47,7 @@ public class ProdutoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Produto> deletarProduto(@PathVariable("id") int id) {
         return ResponseEntity.status(HttpStatus.OK.value()).body(service.deletarProduto(id));
+
     }
 
     @PostMapping

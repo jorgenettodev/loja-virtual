@@ -37,4 +37,16 @@ public class CategoriaService {
         }
         throw new RuntimeException("Categoria nao encontrada");
     }
+
+    // criar método que deleta por id
+    public Categoria deleteCategoriaById(int id) {
+        Optional<Categoria> optional = repository.findById(id);
+
+        if (optional.isPresent()) {
+            repository.deleteById(id);
+            return optional.get();
+        }
+
+        throw new RuntimeException("Categoria não encontrada");
+    }
 }
