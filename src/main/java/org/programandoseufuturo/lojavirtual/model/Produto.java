@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,6 +32,7 @@ public class Produto {
     @JsonProperty("esta_disponivel")
     private boolean estaDisponivel;
 
+    @Column(length = 1000)
     @JsonProperty("url_imagem")
     private String urlImagem;
 
